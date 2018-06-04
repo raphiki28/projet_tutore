@@ -4,7 +4,7 @@ import javax.swing.*;
 
 import controller.Controleur;
 import model.Evenement;
-import model.Frise;
+import model.Chronologie;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -16,12 +16,15 @@ public class PanelChronologie extends JPanel implements ActionListener {
 		private static final long serialVersionUID = 1L;
 		CardLayout gestionnaireCard = new CardLayout(25,25);
 		public PanelChronologie (){
-				Frise maFrise = new Frise(10);
+				Chronologie maFrise = new Chronologie(10);
 				
 				this.setLayout(gestionnaireCard);		
 				
-				PanelFormulaireEvenement panelFormulaire = new PanelFormulaireEvenement();
-				add(panelFormulaire,"Formulaire");
+				PanelFormulaireEvenement panelEvt = new PanelFormulaireEvenement();
+				add(panelEvt,"Formulaire");
+				PanelFormulaireFrise panelFri = new PanelFormulaireFrise();
+				add(panelFri,"Frise");
+				
 					
 				//Controleur controleur = new Controleur(monAgenda,panelFormulaire,panelCalendrier,panelAffichage);
 			}		
