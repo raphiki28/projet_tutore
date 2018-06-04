@@ -8,7 +8,6 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.GregorianCalendar;
-
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -16,34 +15,30 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-
 import controller.Controleur;
 //import model.Chronologie;
 import model.Date;
 import model.Evenement;
 
-public class PanelFormulaire extends JPanel {
+public class PanelFormulaireEvenement extends JPanel {
 
 
 	final static Font FONT_14 = new Font ("Verdana", Font.BOLD,14);
 	final static Font FONT_12 = new Font ("Verdana", Font.BOLD,12);
 	final static Font FONT_11 = new Font ("Verdana", Font.BOLD,11);
+	final String [] POIDS = {" 1 "," 2 "," 3 "," 4 "} ;
 	
-	Date date;
-	JLabel labelDate;
-	JButton boutonAjout = new JButton("+");
+	JButton boutonAjout = new JButton("Ajouter");
 	JTextField champTitre = new JTextField(4);
 	JTextField champJour = new JTextField(4);
 	JTextField champMois = new JTextField(4);
 	JTextField champAnnee = new JTextField(4);	
+	JTextField champImage = new JTextField(4);
+	JComboBox <String> champPoids = new JComboBox<String>(POIDS);
 	JTextArea champDescription = new JTextArea(8,8);
 	
-	public PanelFormulaire() {
-		date = new Date();
-		
-		//à l'ouverture le formulaire de saisie contient la date courante
-		labelDate = new JLabel (date.toString(), JLabel.LEFT);
-		
+	public PanelFormulaireEvenement() {
+				
 		//Le gestionnaire de répartition
 		setLayout(new GridBagLayout());
 		GridBagConstraints contrainte = new GridBagConstraints();
@@ -51,6 +46,9 @@ public class PanelFormulaire extends JPanel {
 		contrainte.anchor = GridBagConstraints.WEST;
 		
 		//Les éléments graphiques
+		JLabel labelImage = new JLabel ("Image", JLabel.LEFT);
+		JLabel labelPoids = new JLabel("Poids", JLabel.LEFT);
+		JLabel labelDate = new JLabel ("Date", JLabel.LEFT);
 		JLabel labelTitre = new JLabel("Titre", JLabel.LEFT);
 		JLabel Date = new JLabel("Date", JLabel.LEFT);
 		JLabel labelDescription = new JLabel("Description", JLabel.LEFT);
@@ -61,18 +59,8 @@ public class PanelFormulaire extends JPanel {
 		
 		//************************************************************
 		
-		//labelDate
-		contrainte.gridy=0; contrainte.gridwidth = 4; contrainte.gridx=0;
-		this.add(labelDate,contrainte);
-		
-		//boutonAjout
-		contrainte.gridwidth=1; contrainte.gridx = 4;
-		boutonAjout.setForeground(Color.white);
-		boutonAjout.setBackground(Color.gray);
-		this.add(boutonAjout,contrainte);
-		
 		//labelTitre et champTitre
-		contrainte.gridy = 1; contrainte.gridwidth= 1; contrainte.gridx = 0;
+		contrainte.gridwidth= 1; contrainte.gridx = 0;
 		this.add(labelTitre,contrainte);
 		contrainte.gridx = 1; contrainte.gridwidth=4;
 		contrainte.fill = GridBagConstraints.HORIZONTAL;
@@ -80,33 +68,60 @@ public class PanelFormulaire extends JPanel {
 		contrainte.fill = GridBagConstraints.NONE;
 		
 		//labelDate et champDate
-		contrainte.gridy = 2; contrainte.gridwidth= 1; contrainte.gridx = 0;
+		contrainte.gridy = 1; contrainte.gridwidth= 1; contrainte.gridx = 0;
 		this.add(labelDate,contrainte);
-		contrainte.gridx = 1; contrainte.gridwidth=4;
+		contrainte.gridx = 2; contrainte.gridwidth=1;
 		contrainte.fill = GridBagConstraints.HORIZONTAL;
 		this.add(champJour,contrainte);
-		contrainte.gridx = 1; contrainte.gridwidth=4;contrainte.gridy=1;
+		contrainte.gridx = 3; contrainte.gridwidth=1;
 		this.add(champMois, contrainte);
-		contrainte.gridx = 1; contrainte.gridwidth=4;contrainte.gridy=2;
+		contrainte.gridx = 4; contrainte.gridwidth=1;
 		this.add(champAnnee, contrainte);
 		contrainte.fill = GridBagConstraints.NONE;
 		
+		//labelPoids et champPoids
+		contrainte.gridy=2; contrainte.gridwidth=2; contrainte.gridx=0;
+		this.add(labelPoids, contrainte);
+		contrainte.gridx=2;contrainte.gridwidth=4;
+		this.add(champPoids, contrainte);
+		
+		
+		//labeImage et champImage
+		contrainte.gridy=3; contrainte.gridx=0;contrainte.gridwidth=2;
+		this.add(labelImage, contrainte);
+		contrainte.gridx=2;contrainte.gridwidth=4;
+		this.add(champImage, contrainte);
+		
 		//labelDescription et champDescription
-		contrainte.gridy = 5; contrainte.gridx = 0;
+		contrainte.gridy = 4; contrainte.gridx = 0; contrainte.gridwidth=2;
 		contrainte.anchor = GridBagConstraints.NORTHWEST;
 		this.add(labelDescription,contrainte);
-		contrainte.gridx = 1; contrainte.gridwidth=4;
+		contrainte.gridx = 2; contrainte.gridwidth=4; contrainte.gridheight=3;
 		contrainte.fill = GridBagConstraints.BOTH;
 		this.add(new JScrollPane(champDescription),contrainte);
+
+		//boutonAjout
+		contrainte.gridy=8; contrainte.gridwidth=1; contrainte.gridx = 4;
+		boutonAjout.setForeground(Color.white);
+		boutonAjout.setBackground(Color.gray);
+		this.add(boutonAjout,contrainte);
 		
 		//fontes, couleurs, aspect, accessibilité
-		labelDate.setFont(FONT_14);
+		labelDate.setFont(FONT_12);
+		labelDate.setDisplayedMnemonic('D');
+
+		labelPoids.setFont(FONT_12);
+		labelPoids.setDisplayedMnemonic('P');
+
+		labelImage.setFont(FONT_12);
+		labelImage.setDisplayedMnemonic('I');
+
 		boutonAjout.setFont(FONT_12);
-		boutonAjout.setFocusPainted(false);
 		
 		labelTitre.setFont(FONT_12);
 		labelTitre.setDisplayedMnemonic('T');
 		labelTitre.setLabelFor(champTitre);
+		champTitre.setFocusable(true);
 		champTitre.setOpaque(false);
 		
 		labelDescription.setFont(FONT_12);
@@ -132,12 +147,6 @@ public class PanelFormulaire extends JPanel {
 	/*public void enregistreEcouteur(Controleur parC){
 		boutonAjout.addActionListener(parC);
 	}*/
-	
-	
-	public void setDate(Date parDate){
-		date = parDate;
-		labelDate.setText(date.toString());
-	}
 	
 	public JTextField getChampRecevantFocus(){
 		return champTitre;

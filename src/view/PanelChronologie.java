@@ -1,25 +1,26 @@
 package view;
 
 import javax.swing.*;
+
 import controller.Controleur;
 import model.Evenement;
 import model.Frise;
-import model.Clavier;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import model.Date;
-public class PanelChrono extends JPanel implements ActionListener {
+public class PanelChronologie extends JPanel implements ActionListener {
 	
 		private static final long serialVersionUID = 1L;
 		CardLayout gestionnaireCard = new CardLayout(25,25);
-		public PanelChrono (){
+		public PanelChronologie (){
 				Frise maFrise = new Frise(10);
 				
 				this.setLayout(gestionnaireCard);		
 				
-				PanelFormulaire panelFormulaire = new PanelFormulaire();
+				PanelFormulaireEvenement panelFormulaire = new PanelFormulaireEvenement();
 				add(panelFormulaire,"Formulaire");
 					
 				//Controleur controleur = new Controleur(monAgenda,panelFormulaire,panelCalendrier,panelAffichage);
