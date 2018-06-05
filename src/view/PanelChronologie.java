@@ -17,7 +17,7 @@ public class PanelChronologie extends JPanel implements ActionListener {
 		private static final long serialVersionUID = 1L;
 		CardLayout gestionnaireCard = new CardLayout(25,25);
 		public PanelChronologie (){
-				Chronologie maFrise = new Chronologie(10);
+				Chronologie maFrise = new Chronologie();
 				Evenement evt1 =new Evenement(new Date(14,07,1789),"Revolution","prise de la bastille et emeute dans les rue",1,"image"+File.separator+"image_evt.png");
 				
 				this.setLayout(gestionnaireCard);		

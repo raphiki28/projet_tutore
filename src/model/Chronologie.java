@@ -1,26 +1,51 @@
 package model;
-import java.util.*;
 
-import model.Evenement;
-
+import java.util.ArrayList;
+import java.util.GregorianCalendar;
+import java.util.HashMap;
+import java.util.TreeSet;
 
 public class Chronologie {
-	private final int LONGEUR;
-	private Evenement [] tabEvenement;
-	private int nbEvenements = 0;
-	HashMap <Integer, ArrayList<Evenement> > Hash_evt; 
-	GregorianCalendar calendar;
-	public Chronologie(int parLONGEUR){
-		
-		Hash_evt = new HashMap <Integer, ArrayList<Evenement> >();
-		LONGEUR = parLONGEUR;
-		this.tabEvenement = new Evenement[LONGEUR];
+	private String nom;
+	private TreeSet <Evenement> chronoEvts;
+	private Date debut;
+	private Date fin;
+	private int periode;
+	private String lienFichier;
+	
+	public Chronologie (String parNom, Date parDebut, Date parFin, int parPeriode, String parFile) {
+		nom = parNom;
+		chronoEvts = new TreeSet <> ();
+		debut = parDebut;
+		fin = parFin;
+		periode = parPeriode;
+		lienFichier = parFile;
 	}
 	
-	public void ajout(Evenement parEvt){
-		tabEvenement[nbEvenements] = parEvt;
-		nbEvenements ++;
-		
+	public void ajout2 (Evenement parEvt) {
+		chronoEvts.add(parEvt);
+	}
+	
+	public void suppression (Evenement parEvt) {
+		chronoEvts.remove(parEvt);
+	}
+	
+	public String toString2 () {
+		String chaine = new String();
+		for (Evenement evt : chronoEvts.get(i))
+			chaine += ">>> " + evt.getDate().toString() + "\n\t" + evt.getTitre() + " à " + evt.getLieu() + "\n";
+
+		for (int i=0 ; i<52 ; i++)
+			if (mapEvts.containsKey(i)) {
+				chaine += "Semaine " + i + " :\n";
+				for (Evenement evt : mapEvts.get(i))
+					chaine += ">>> " + evt.getDate().toString() + "\n\t" + evt.getTitre() + " à " + evt.getLieu() + "\n";
+			}
+		return chaine;
+	}
+	
+	public void ajout(Evenement parEvt) {
+		chronoEvt.add(parEvt);
 		Date date = parEvt.getChDate();
 		calendar = new GregorianCalendar(date.getAnnee(), date.getMois()-1, date.getJour());
 		int numeroDeSemaine = calendar.get(Calendar.WEEK_OF_YEAR);
@@ -32,12 +57,9 @@ public class Chronologie {
 			liste.add(parEvt);
 			Hash_evt.put(numeroDeSemaine, liste);
 		}
-		
-		
-		
 	}
 	
-	public String toString(){
+	public String toString (){
 		String chaine = new String();
 		for(int i=0;i<nbEvenements;i++){
 			chaine+=tabEvenement[i]+"\n";

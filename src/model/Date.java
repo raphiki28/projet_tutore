@@ -1,104 +1,107 @@
 package model;
+import java.util.StringTokenizer;
 
-import java.util.GregorianCalendar;
-import java.util.Calendar;
- 
 public class Date {
-  private int chJour;
-  private int chMois;
-  private int chAnnee;
-   
-  public Date ()   { 
-	  GregorianCalendar dateAuj = new GregorianCalendar ();
-	  chAnnee = dateAuj.get (Calendar.YEAR);
-	  chMois = dateAuj.get (Calendar.MONTH)+1; // janvier = 0, fevrier = 1...
-	  chJour = dateAuj.get (Calendar.DAY_OF_MONTH);
-  }
-  
-  public Date (int parJour, int parMois, int parAnnee)   {   
-	  chJour = parJour;
-	  chMois = parMois;
-	  chAnnee = parAnnee; 
-	GregorianCalendar date = new GregorianCalendar (chAnnee,chMois-1,chJour);
-  } 
-   
-  /**
-   * retourne 0 si this et parDate sont egales, 
-   * -1 si this procede parDate,
-   *  1 si parDate procede this
-   */
-  public int compareTo (Date parDate) {
-    if (chAnnee < parDate.chAnnee)
-		return -1;
-	if (chAnnee > parDate.chAnnee)
-		return 1;
-	// les annees sont =
-	if (chMois < parDate.chMois)
-		return -1;
-	if (chMois > parDate.chMois)
-		return 1;
-	// les mois sont =
-	if (chJour < parDate.chJour)
-		return -1;
-	if (chJour > parDate.chJour)
-		return 1;
-	return 0;	
-  }
-
-  public static int dernierJourDuMois (int parMois, int parAnnee) {
-		switch (parMois) {
-			 case 2 : if (estBissextile (parAnnee))  return 29 ; else return 28 ;  
-			 case 4 : 	 case 6 : 	 case 9 : 	 case 11 : return 30 ;
-			 default : return 31 ;
-			}  // switch
-	  } 
-	  
-  private static boolean estBissextile(int parAnnee) {
-			return parAnnee % 4 == 0 && (parAnnee % 100 != 0 || parAnnee % 400 == 0);
-	  }
-    
-  public String toString () {
-    String chaine = new String();
-	chaine += " " + chJour + " ";
-	switch (chMois) {
-		 case 1: chaine += "janvier"; break;
-		 case 2: chaine += "fevrier"; break;
-		 case 3: chaine += "mars"; break;
-		 case 4: chaine += "avril"; break;
-		 case 5: chaine += "mai"; break;
-		 case 6: chaine += "juin"; break;
-		 case 7: chaine += "juillet"; break;
-		 case 8: chaine += "aout"; break;
-		 case 9: chaine += "septembre"; break;
-		 case 10: chaine += "octobre"; break;
-		 case 11: chaine += "novembre"; break;
-		 case 12: chaine += "decembre"; break;
-		}	
-	return chaine;
-  }  
-
-
-public int getAnnee() { 
-	return chAnnee;
-}
-
-public int getJour() { 
-	return chJour;
-}
-
-public int getMois() { 
-	return chMois;
-}
-
-
-public static String getMoisString(int chMois)
-	{
-	String mois[] = {"janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"} ;
-	return mois[chMois - 1] ;
+	private int jour;
+	private int mois;
+	private int annee;
+	
+	public Date (int parJour, int parMois, int parAnnee) {
+		annee = parAnnee;
+		mois = parMois;
+		jour = parJour;
+	}
+	
+	public Date(int parAnnee) {
+		annee = parAnnee;
+		mois = 0;
+		jour = 0;
+	}
+	
+	public String toString () {
+		String [] nomMois = {"janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "novembre", "octobre", "décembre"};
+		return jour + " " + nomMois[mois-1] + " " + annee;
+	}
+	
+	public String toString2 () {
+		return jour + "/" + mois + "/" + annee;
+	}
+	
+	public int compareTo (Date parDate) {
+		if (annee < parDate.annee)
+			return -1;
+		if (annee > parDate.annee)
+			return 1;
+		if (mois < parDate.mois)
+			return -1;
+		if (mois > parDate.mois)
+			return 1;
+		if (jour < parDate.jour)
+			return -1;
+		if (jour > parDate.jour)
+			return 1;
+		return 0;
+	}
+	
+	public static Date lireDate () {
+		System.out.println("Entrer le jour");
+		int parJour = Clavier.lireInt();
+		System.out.println("Entrer le mois");
+		int parMois = Clavier.lireInt();
+		System.out.println("Entrer l'année");
+		int parAnnee = Clavier.lireInt();
+		return new Date(parJour, parMois, parAnnee);
+	}
+	
+	public static Date lireDate2 () {
+		System.out.println("Entrer la date sous la forme 'dd-mm-aaaa'");
+		String chaine = Clavier.lireString();
+		StringTokenizer souschaine = new StringTokenizer(chaine, "-");
+		int [] valeurs = new int[3];
+		for (int i=0 ; souschaine.hasMoreTokens() ; i++)
+			valeurs[i] = Integer.parseInt(souschaine.nextToken());
+		return new Date(valeurs[0], valeurs[1], valeurs[2]);
 	}
 
+	public static boolean estBissextile (int parAnnee) {
+		return(parAnnee%4==0 && parAnnee%100!=0) || parAnnee%400==0;
+	}
+	
+	public static int dernierJourDuMois (int parMois, int parAnnee) {
+		switch (parMois) {
+			case 2:
+				if (estBissextile(parAnnee))
+					return 29;
+				return 28;
+			case 1: case 3: case 5: case 7: case 8: case 10: case 12:
+				return 31;
+			default:
+				return 30;
+		}
+	}
+	
+	public boolean estValide () {
+		if (annee<1583)
+			return false;
+		if (mois>0 && mois<=12 && jour>0 && jour<=dernierJourDuMois(mois, annee))
+			return true;
+		return false;
+	}
 
-public boolean isToday() {
-	return new Date().compareTo(this) == 0;
+	public int getJour () {
+		return jour;
+	}
+	
+	public int getMois () {
+		return mois;
+	}
+	
+	public int getAnnee () {
+		return annee;
+	}
+	
+	public String getNomMois () {
+		String [] nomMois = {"janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "novembre", "octobre", "décembre"};
+		return nomMois[mois-1];
+	}
 }
-}  // class Date

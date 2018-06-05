@@ -1,58 +1,91 @@
 package model;
 
-import model.Date;
-
-public class Evenement{
-	private Date chDate;
-	private String chTitre;
-	private String chDescription;
-	private int chPoids;
-	private String chImage;
+public class Evenement implements Comparable <Evenement> {
+	private Date date;
+	private String titre;
+	private int poids;
+	private String description;
+	private String lienImage;
 	
-	
-	public Evenement(Date parDate,String parTitre,String parDescription, int parPoids, String parImage){
-		this.chDate = parDate;
-		this.chTitre = parTitre;
-		this.chDescription= parDescription;
-		this.chPoids= parPoids;
-		this.chImage= parImage;
+	public Evenement(Date parDate, String parTitre, String parDesc, int parPoids, String parImg) {
+		date = parDate;
+		titre = parTitre;
+		poids = parPoids;
+		description = parDesc;
+		lienImage = parImg;
 	}
 	
-	public String toString(){
-		return chTitre+"/"+chDescription;
-	}
-
-	//accesseur de la classe
-	public Date getChDate(){
-		return this.chDate;
-	}
-
-	public String getChTitre(){
-		return this.chTitre;
+	public String toString() {
+		return date.toString() + " | " + titre + " ("+ poids + ") | " + description + " | " + lienImage;
 	}
 	
-	public String getChDescription(){
-		return this.chDescription;
+	public int compareTo (Evenement parEvt) {
+		if (date.compareTo(parEvt.date) < 0)
+			return -1;
+		if (date.compareTo(parEvt.date) > 0)
+			return 1;
+		if (titre.compareTo(parEvt.titre) < 0)
+			return -1;
+		if (titre.compareTo(parEvt.titre) > 0)
+			return 1;
+		if (poids < parEvt.poids)
+			return -1;
+		if (poids > parEvt.poids)
+			return 1;
+		return 0;
 	}
-	public String getChImage() {
-		return this.chImage;
-	}
-	public int getChPoids() {
-		return this.chPoids;
-	}
-
 	
-	//modifieur de la classe
-	public void setChDate(Date parDate){
-		this.chDate = parDate;
+	public static Evenement lireEvenement () {
+		System.out.println("Entrer la date de l'évenement");
+		Date parDate = Date.lireDate();
+		System.out.println("Entrer le titre de l'évenement");
+		String parTitre = Clavier.lireString();
+		System.out.println("Entrer la description de l'évenement");
+		String parDesc = Clavier.lireString();
+		System.out.println("Entrer le poids de l'évenement");
+		int parPoids = Clavier.lireInt();
+		System.out.println("Entrer le lien de l'image");
+		String parImg = Clavier.lireString();
+		return new Evenement(parDate, parTitre, parDesc, parPoids, parImg);
 	}
-
-	public void setChTitre(String parTitre){
-		this.chTitre = parTitre;
+	
+	public Date getDate() {
+		return date;
 	}
-
-	public void setChLieu(String parDescription){
-		this.chDescription = parDescription;
+	
+	public String getTitre() {
+		return titre;
 	}
-
+	
+	public int getPoids() {
+		return poids;
+	}
+	
+	public String getDescription() {
+		return description;
+	}
+	
+	public String getLienImage() {
+		return lienImage;
+	}
+	
+	public void setDate(Date parDate) {
+		date = parDate;
+	}
+	
+	public void setTitre(String parTitre) {
+		titre = parTitre;
+	}
+	
+	public void setPoids(int parPoids) {
+		poids = parPoids;
+	}
+	
+	public void setDescription(String parDesc) {
+		description = parDesc;
+	}
+	
+	public void setLienImage(String parImage) {
+		lienImage = parImage;
+	}
 }

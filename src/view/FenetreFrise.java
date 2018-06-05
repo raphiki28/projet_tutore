@@ -6,8 +6,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
 
-public class FenetreFrise extends JFrame{
-	public FenetreFrise(String parTitre) {
+public class FenetreFrise extends JFrame {
+	public FenetreFrise (String parTitre) {
 		super(parTitre);
 		PanelChronologie contentPane = new PanelChronologie();
 		setContentPane(contentPane);
@@ -25,14 +25,14 @@ public class FenetreFrise extends JFrame{
 			menuItem.setActionCommand(i);
 			menuBar.add(menuItem);
 		}
-
 		
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setSize(600,650);
 		setVisible(true);
 		setLocation(100,100);
 	}
-	public static void main(String [] args) {
+	
+	public static void main (String [] args) {
 		new FenetreFrise("Cool&Frise");
 	}
 }
