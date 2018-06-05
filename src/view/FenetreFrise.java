@@ -4,6 +4,7 @@ import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.KeyStroke;
 
 public class FenetreFrise extends JFrame{
 	public FenetreFrise(String parTitre) {
@@ -12,28 +13,19 @@ public class FenetreFrise extends JFrame{
 		setContentPane(contentPane);
 		contentPane.setBackground(new Color(0,0,0));
 		
+		final String [] items = {"Evenement","Frise","Affichage","Quitter"};
+		
 		JMenuBar menuBar = new JMenuBar();
 		this.setJMenuBar(menuBar);
 		
-		JMenuItem menuItemEvenement = new JMenuItem("Evenement", 'E');
-		menuItemEvenement.addActionListener(contentPane);
-		menuItemEvenement.setActionCommand("Evenement");
-		menuBar.add(menuItemEvenement);
-		
-		JMenuItem menuItemFrise = new JMenuItem("Frise", 'F');
-		menuItemFrise.addActionListener(contentPane);
-		menuItemFrise.setActionCommand("Frise");
-		menuBar.add(menuItemFrise);
-		
-		JMenuItem menuItemAffichage = new JMenuItem("Affichage", 'A');
-		menuItemAffichage.addActionListener(contentPane);
-		menuItemAffichage.setActionCommand("Affichage");
-		menuBar.add(menuItemAffichage);
-		
-		JMenuItem menuItemFermer = new JMenuItem("Fermer", 'e');
-		menuItemFermer.addActionListener(contentPane);
-		menuItemFermer.setActionCommand("Fermer");
-		menuBar.add(menuItemFermer);
+		for (String i: items) {
+			JMenuItem menuItem = new JMenuItem(i, i.charAt(0));
+			menuItem.setAccelerator(KeyStroke.getKeyStroke(i.charAt(0), java.awt.Event.CTRL_MASK));
+			menuItem.addActionListener(contentPane);
+			menuItem.setActionCommand(i);
+			menuBar.add(menuItem);
+		}
+
 		
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setSize(600,650);

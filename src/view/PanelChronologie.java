@@ -32,8 +32,8 @@ public class PanelChronologie extends JPanel implements ActionListener {
 				//Controleur controleur = new Controleur(monAgenda,panelFormulaire,panelCalendrier,panelAffichage);
 			}		
 		public void actionPerformed(ActionEvent evt) {
-			if(evt.getActionCommand()=="Fermer"){
-				int saisi = JOptionPane.showConfirmDialog(this, "Quittez,","Comfirmation",JOptionPane.OK_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE);
+			if(evt.getActionCommand()=="Quitter"){
+				int saisi = JOptionPane.showConfirmDialog(this, "Voulez-vous quitter l'application ?","Comfirmation",JOptionPane.OK_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE);
 				switch(saisi){
 				case JOptionPane.CLOSED_OPTION:
 					break;
