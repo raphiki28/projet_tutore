@@ -22,11 +22,11 @@ public class PanelChronologie extends JPanel implements ActionListener {
 				
 				this.setLayout(gestionnaireCard);		
 				
-				PanelFormulaireEvenement panelEvt = new PanelFormulaireEvenement();
+				PanelEvenement panelEvt = new PanelEvenement(maFrise);
 				add(panelEvt,"Evenement");
-				PanelFormulaireFrise panelFri = new PanelFormulaireFrise();
+				PanelFrise panelFri = new PanelFrise();
 				add(panelFri,"Frise");
-				PanelAffichageEvenement afficheEvt = new PanelAffichageEvenement(evt1);
+				PanelAffichage afficheEvt = new PanelAffichage(evt1,maFrise);
 				add(afficheEvt,"Affichage");
 					
 				//Controleur controleur = new Controleur(monAgenda,panelFormulaire,panelCalendrier,panelAffichage);
