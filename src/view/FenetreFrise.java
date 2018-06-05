@@ -36,9 +36,9 @@ public class FenetreFrise extends JFrame{
 		menuBar.add(menuItemFermer);
 		
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setSize(400,400);
+		setSize(600,650);
 		setVisible(true);
-		setLocation(150,150);
+		setLocation(100,100);
 	}
 	public static void main(String [] args) {
 		new FenetreFrise("Cool&Frise");

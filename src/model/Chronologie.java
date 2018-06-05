@@ -4,13 +4,13 @@ import java.util.*;
 import model.Evenement;
 
 
-public class Frise {
+public class Chronologie {
 	private final int LONGEUR;
 	private Evenement [] tabEvenement;
 	private int nbEvenements = 0;
 	HashMap <Integer, ArrayList<Evenement> > Hash_evt; 
 	GregorianCalendar calendar;
-	public Frise(int parLONGEUR){
+	public Chronologie(int parLONGEUR){
 		
 		Hash_evt = new HashMap <Integer, ArrayList<Evenement> >();
 		LONGEUR = parLONGEUR;

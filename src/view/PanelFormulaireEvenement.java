@@ -30,16 +30,16 @@ public class PanelFormulaireEvenement extends JPanel {
 	
 	JButton boutonAjout = new JButton("Ajouter");
 	JTextField champTitre = new JTextField(4);
-	JTextField champJour = new JTextField(4);
-	JTextField champMois = new JTextField(4);
-	JTextField champAnnee = new JTextField(4);	
+	JTextField champJour = new JTextField(3);
+	JTextField champMois = new JTextField(3);
+	JTextField champAnnee = new JTextField(3);	
 	JTextField champImage = new JTextField(4);
 	JComboBox <String> champPoids = new JComboBox<String>(POIDS);
 	JTextArea champDescription = new JTextArea(8,8);
 	
 	public PanelFormulaireEvenement() {
-				
-		//Le gestionnaire de répartition
+					
+			//Le gestionnaire de répartition
 		setLayout(new GridBagLayout());
 		GridBagConstraints contrainte = new GridBagConstraints();
 		contrainte.insets = new Insets(6,6,6,6);
@@ -50,7 +50,6 @@ public class PanelFormulaireEvenement extends JPanel {
 		JLabel labelPoids = new JLabel("Poids", JLabel.LEFT);
 		JLabel labelDate = new JLabel ("Date", JLabel.LEFT);
 		JLabel labelTitre = new JLabel("Titre", JLabel.LEFT);
-		JLabel Date = new JLabel("Date", JLabel.LEFT);
 		JLabel labelDescription = new JLabel("Description", JLabel.LEFT);
 		
 		//***********************Couleurs temps***********************
@@ -62,7 +61,7 @@ public class PanelFormulaireEvenement extends JPanel {
 		//labelTitre et champTitre
 		contrainte.gridwidth= 1; contrainte.gridx = 0;
 		this.add(labelTitre,contrainte);
-		contrainte.gridx = 1; contrainte.gridwidth=4;
+		contrainte.gridx = 2; contrainte.gridwidth=4;
 		contrainte.fill = GridBagConstraints.HORIZONTAL;
 		this.add(champTitre,contrainte);
 		contrainte.fill = GridBagConstraints.NONE;
@@ -71,13 +70,11 @@ public class PanelFormulaireEvenement extends JPanel {
 		contrainte.gridy = 1; contrainte.gridwidth= 1; contrainte.gridx = 0;
 		this.add(labelDate,contrainte);
 		contrainte.gridx = 2; contrainte.gridwidth=1;
-		contrainte.fill = GridBagConstraints.HORIZONTAL;
 		this.add(champJour,contrainte);
 		contrainte.gridx = 3; contrainte.gridwidth=1;
 		this.add(champMois, contrainte);
 		contrainte.gridx = 4; contrainte.gridwidth=1;
 		this.add(champAnnee, contrainte);
-		contrainte.fill = GridBagConstraints.NONE;
 		
 		//labelPoids et champPoids
 		contrainte.gridy=2; contrainte.gridwidth=2; contrainte.gridx=0;
@@ -90,6 +87,7 @@ public class PanelFormulaireEvenement extends JPanel {
 		contrainte.gridy=3; contrainte.gridx=0;contrainte.gridwidth=2;
 		this.add(labelImage, contrainte);
 		contrainte.gridx=2;contrainte.gridwidth=4;
+		contrainte.fill = GridBagConstraints.HORIZONTAL;
 		this.add(champImage, contrainte);
 		
 		//labelDescription et champDescription
@@ -109,14 +107,20 @@ public class PanelFormulaireEvenement extends JPanel {
 		//fontes, couleurs, aspect, accessibilité
 		labelDate.setFont(FONT_12);
 		labelDate.setDisplayedMnemonic('D');
-
+		champJour.setOpaque(false);
+		champMois.setOpaque(false);
+		champAnnee.setOpaque(false);
+		
 		labelPoids.setFont(FONT_12);
 		labelPoids.setDisplayedMnemonic('P');
+		champPoids.setOpaque(false);
 
 		labelImage.setFont(FONT_12);
 		labelImage.setDisplayedMnemonic('I');
+		champImage.setOpaque(false);
 
 		boutonAjout.setFont(FONT_12);
+
 		
 		labelTitre.setFont(FONT_12);
 		labelTitre.setDisplayedMnemonic('T');
@@ -140,11 +144,11 @@ public class PanelFormulaireEvenement extends JPanel {
 		champTitre.requestFocus();
 	}
 	
-	public Evenement getEvenement() {		
+	/*public Evenement getEvenement() {		
 		return new Evenement (new Date(Integer.parseInt(champJour.getText()),Integer.parseInt(champMois.getText()),Integer.parseInt(champAnnee.getText())),champTitre.getText(),champDescription.getText());
 	}
 	
-	/*public void enregistreEcouteur(Controleur parC){
+	public void enregistreEcouteur(Controleur parC){
 		boutonAjout.addActionListener(parC);
 	}*/
 	

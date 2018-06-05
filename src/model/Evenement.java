@@ -6,12 +6,16 @@ public class Evenement{
 	private Date chDate;
 	private String chTitre;
 	private String chDescription;
+	private int chPoids;
+	private String chImage;
 	
 	
-	public Evenement(Date parDate,String parTitre,String parDescription){
+	public Evenement(Date parDate,String parTitre,String parDescription, int parPoids, String parImage){
 		this.chDate = parDate;
 		this.chTitre = parTitre;
 		this.chDescription= parDescription;
+		this.chPoids= parPoids;
+		this.chImage= parImage;
 	}
 	
 	public String toString(){
@@ -29,6 +33,12 @@ public class Evenement{
 	
 	public String getChDescription(){
 		return this.chDescription;
+	}
+	public String getChImage() {
+		return this.chImage;
+	}
+	public int getChPoids() {
+		return this.chPoids;
 	}
 
 	

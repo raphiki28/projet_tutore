@@ -9,6 +9,7 @@ import model.Chronologie;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 import model.Date;
 public class PanelChronologie extends JPanel implements ActionListener {
@@ -17,14 +18,16 @@ public class PanelChronologie extends JPanel implements ActionListener {
 		CardLayout gestionnaireCard = new CardLayout(25,25);
 		public PanelChronologie (){
 				Chronologie maFrise = new Chronologie(10);
+				Evenement evt1 =new Evenement(new Date(14,07,1789),"Revolution","prise de la bastille et emeute dans les rue",1,"image"+File.separator+"image_evt.png");
 				
 				this.setLayout(gestionnaireCard);		
 				
 				PanelFormulaireEvenement panelEvt = new PanelFormulaireEvenement();
-				add(panelEvt,"Formulaire");
+				add(panelEvt,"Evenement");
 				PanelFormulaireFrise panelFri = new PanelFormulaireFrise();
 				add(panelFri,"Frise");
-				
+				PanelAffichageEvenement afficheEvt = new PanelAffichageEvenement(evt1);
+				add(afficheEvt,"Affichage");
 					
 				//Controleur controleur = new Controleur(monAgenda,panelFormulaire,panelCalendrier,panelAffichage);
 			}		
