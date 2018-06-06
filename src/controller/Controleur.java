@@ -21,10 +21,10 @@ public class Controleur implements ActionListener {
 	frise = parFrise;
 	panelFormulaireEvt =parPanelFormulaireEvt;
 	panelFormulaireFrise=parPanelFormulaireFrise;
-	panelAffichageEvt=parPanelAffichageEvenement;
+	//panelAffichageEvt=parPanelAffichageEvenement;
 	panelAffichageFrise = parPanelAffichageFrise;
 	panelFormulaireEvt.enregistreEcouteur(this);
-	panelFormulaireFrise.enregistreEcouteur(this);
+	//panelFormulaireFrise.enregistreEcouteur(this);
 	//panelAffichageFrise.enregisterEcouteur(this);
 	}
 
@@ -37,8 +37,6 @@ public class Controleur implements ActionListener {
 		else if(evt.getActionCommand().equals("Créer")) {
 			Chronologie frise2 = panelFormulaireFrise.getFrise();
 		}
-		else if (evt.getActionCommand().equals(">")){
-		//	show.
-		}
+	
 	}
 }

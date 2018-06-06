@@ -17,12 +17,9 @@ public class PanelAffichage extends JPanel {
 		JPanel panelNord = new JPanel();
 		panelNord.setLayout(new BorderLayout());
 		PanelAffichageFrise panelSud = new PanelAffichageFrise(frise1);
-		PanelAffichageEvenement panelCentre = new PanelAffichageEvenement(evt);
-		JButton boutonSuivant = new JButton(">");
-		JButton boutonPrecedant = new JButton("<");
-		
-		panelNord.add(boutonSuivant,BorderLayout.EAST);
-		panelNord.add(boutonPrecedant, BorderLayout.WEST);
+		PanelAffichageEvenement panelCentre = new PanelAffichageEvenement(frise1);
+
+
 		panelNord.add(panelCentre,BorderLayout.CENTER);
 		add(panelSud,BorderLayout.SOUTH);
 		add(panelNord, BorderLayout.NORTH);

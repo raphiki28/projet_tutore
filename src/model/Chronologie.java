@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.TreeSet;
@@ -15,6 +16,7 @@ public class Chronologie {
 	
 	public Chronologie (String parNom, Date parDebut, Date parFin, int parPeriode, String parFile) {
 		nom = parNom;
+		
 		chronoEvts = new TreeSet <> ();
 		debut = parDebut;
 		fin = parFin;
@@ -28,6 +30,9 @@ public class Chronologie {
 	
 	public void suppression (Evenement parEvt) {
 		chronoEvts.remove(parEvt);
+	}
+	public Collection<Evenement> getEvenement() {
+		return chronoEvts;
 	}
 }
 /*	
