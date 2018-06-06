@@ -21,8 +21,8 @@ public class PanelChronologie extends JPanel implements ActionListener {
 
 	CardLayout gestCard = new CardLayout(25,25);
 
-	//PanelFrise pFrise = new PanelFrise();
-	//PanelEvenement pEvt = new PanelEvenement();
+	PanelFrise pFrise = new PanelFrise();
+	PanelEvenement pEvt = new PanelEvenement();
 	//PanelAffichage pAffichage = new PanelAffichage();
 	
 	public PanelChronologie () {
