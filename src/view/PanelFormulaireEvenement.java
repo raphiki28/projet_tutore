@@ -144,13 +144,13 @@ public class PanelFormulaireEvenement extends JPanel {
 		champTitre.requestFocus();
 	}
 	
-	/*public Evenement getEvenement() {		
-		return new Evenement (new Date(Integer.parseInt(champJour.getText()),Integer.parseInt(champMois.getText()),Integer.parseInt(champAnnee.getText())),champTitre.getText(),champDescription.getText());
+	public Evenement getEvenement() {		
+		return new Evenement (new Date(Integer.parseInt(champJour.getText()),Integer.parseInt(champMois.getText()),Integer.parseInt(champAnnee.getText())),champTitre.getText(),champDescription.getText(),champPoids.getSelectedIndex(),champImage.getText());
 	}
 	
 	public void enregistreEcouteur(Controleur parC){
 		boutonAjout.addActionListener(parC);
-	}*/
+	}
 	
 	public JTextField getChampRecevantFocus(){
 		return champTitre;

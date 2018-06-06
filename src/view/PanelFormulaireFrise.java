@@ -27,7 +27,7 @@ public class PanelFormulaireFrise extends JPanel {
 	final static Font FONT_14 = new Font ("Verdana", Font.BOLD,14);
 	final static Font FONT_12 = new Font ("Verdana", Font.BOLD,12);
 	final static Font FONT_11 = new Font ("Verdana", Font.BOLD,11);
-	JButton boutonAjout = new JButton("Ajouter");
+	JButton boutonAjout = new JButton("Créer");
 	JTextField champTitre = new JTextField(4);
 	JTextField champDebut =new JTextField(4);
 	JTextField champFin =new JTextField(4);
@@ -142,12 +142,15 @@ public class PanelFormulaireFrise extends JPanel {
 		//le focus est donné au premier champ de saisie
 		champTitre.requestFocus();
 	}
+	public Chronologie getFrise() {
+		return new Chronologie(champTitre.getText(),new Date(Integer.parseInt(champDebut.getText())),new Date (Integer.parseInt(champFin.getText())),Integer.parseInt(champPeriode.getText()),champFichier.getText());
+	}
 	
 
 	
-	/*public void enregistreEcouteur(Controleur parC){
+	public void enregistreEcouteur(Controleur parC){
 		boutonAjout.addActionListener(parC);
-	}*/
+	}
 	
 	public JTextField getChampRecevantFocus(){
 		return champTitre;

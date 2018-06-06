@@ -14,8 +14,8 @@ public class Date {
 	
 	public Date(int parAnnee) {
 		annee = parAnnee;
-		mois = 0;
-		jour = 0;
+		mois = 1;
+		jour = 1;
 	}
 	
 	public String toString () {
