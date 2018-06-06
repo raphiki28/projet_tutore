@@ -22,14 +22,15 @@ public class Chronologie {
 		lienFichier = parFile;
 	}
 	
-	public void ajout2 (Evenement parEvt) {
+	public void ajout (Evenement parEvt) {
 		chronoEvts.add(parEvt);
 	}
 	
 	public void suppression (Evenement parEvt) {
 		chronoEvts.remove(parEvt);
 	}
-	
+}
+/*	
 	public String toString2 () {
 		String chaine = new String();
 		for (Evenement evt : chronoEvts.get(i))
@@ -77,7 +78,7 @@ public class Chronologie {
 	}
 
 }
-
+*/
 
 /*
 public class Agenda {

@@ -24,13 +24,13 @@ public class PanelAffichageEvenement extends JPanel {
 		GridBagConstraints contrainte = new GridBagConstraints();
 		contrainte.insets = new Insets(6,6,6,6);
 		contrainte.anchor = GridBagConstraints.WEST;
-		ImageIcon image = new ImageIcon(new ImageIcon(evt.getChImage()).getImage().getScaledInstance(120, 120, Image.SCALE_DEFAULT));
+		ImageIcon image = new ImageIcon(new ImageIcon(evt.getLienImage()).getImage().getScaledInstance(120, 120, Image.SCALE_DEFAULT));
 		
 		JLabel labelImage = new JLabel(image,JLabel.LEFT);
 		
-		JLabel labelDate = new JLabel (evt.getChDate().toString(),JLabel.LEFT);
-		JLabel labelTitre = new JLabel(evt.getChTitre(),JLabel.LEFT);
-		JLabel labelDescription =new JLabel (evt.getChDescription(),JLabel.LEFT);
+		JLabel labelDate = new JLabel (evt.getDate().toString(),JLabel.LEFT);
+		JLabel labelTitre = new JLabel(evt.getTitre(),JLabel.LEFT);
+		JLabel labelDescription =new JLabel (evt.getDescription(),JLabel.LEFT);
 		
 		//labelTitre
 		add(labelTitre, contrainte);

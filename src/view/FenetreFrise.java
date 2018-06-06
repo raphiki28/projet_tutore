@@ -13,7 +13,7 @@ public class FenetreFrise extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setBackground(new Color(0,0,0));
 		
-		final String [] items = {"Evenement","Frise","Affichage","Quitter"};
+		final String [] items = {"Frise","Evenement","Affichage","Quitter"};
 		
 		JMenuBar menuBar = new JMenuBar();
 		this.setJMenuBar(menuBar);

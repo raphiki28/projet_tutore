@@ -1,25 +1,32 @@
 package view;
 
 import java.awt.BorderLayout;
-import javax.swing.JButton;
+import java.awt.Color;
+import java.awt.Font;
+
+import javax.swing.JLabel;
 import javax.swing.JPanel;
-import model.Evenement;
-import model.Chronologie;
 
-
-public class PanelEvenement extends JPanel{
-	
-	public PanelEvenement(Chronologie frise1) {
-		setLayout(new BorderLayout());
-
+public class PanelEvenement extends JPanel {
+	public PanelEvenement () {
+		setLayout(new BorderLayout(10,10));
+		
+		JLabel labelNord = new JLabel("NOM DE LA FRISE", JLabel.CENTER);
+		labelNord.setFont (new Font ("Verdana",Font.PLAIN,20));
+		labelNord.setOpaque(true);
+		
 		PanelFormulaireEvenement panelOuest = new PanelFormulaireEvenement();
-		PanelListeEvenement panelEst = new PanelListeEvenement(frise1);
+		//PanelListeEvenement panelEst = new PanelListeEvenement();
 		
-	
-		add(panelOuest,BorderLayout.WEST);
-		add(panelEst, BorderLayout.EAST);
+		JLabel panelEst = new JLabel("LISTE DES EVENEMENTS", JLabel.CENTER);
+		panelEst.setOpaque(true);
+		
+		add(labelNord, BorderLayout.NORTH);
+		add(panelOuest, BorderLayout.WEST);
+		add(panelEst, BorderLayout.CENTER);
+		
+		setBackground(new Color(100,67,98));
 	}
-		
 }
 
 
