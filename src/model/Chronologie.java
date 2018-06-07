@@ -49,11 +49,11 @@ public class Chronologie {
 	
 	public String toString() {
 		String chaine = nomChrono + "\n";
-		for (int i=0 ; i<anneeFin-anneeDebut ; i++)
+		for (int i=anneeDebut ; i<anneeFin ; i++)
 			if (chronoEvts.containsKey(i)) {
-				chaine += " - " + i + " :\n";
+				chaine += "- " + i + " :\n";
 				for (Evenement evt : chronoEvts.get(i))
-					chaine += "\t>>> " + evt.getDate() + "\n\t [" + evt.getPoids() + "] " + evt.getTitre() + "\n";
+					chaine += "\t>>> " + evt.getDate() + "\t [" + evt.getPoids() + "] " + evt.getTitre() + "\n";
 			}
 		return chaine;
 	}

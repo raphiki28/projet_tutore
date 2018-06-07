@@ -16,7 +16,7 @@ public class Evenement implements Comparable <Evenement> {
 	}
 	
 	public String toString() {
-		return date.toString() + " | " + titre + " ("+ poids + ") | " + description + " | " + lienImage;
+		return date.toString() + " | [" + poids + "] " + titre + " | " + description + " | " + lienImage;
 	}
 	
 	public int compareTo (Evenement parEvt) {
