@@ -38,5 +38,7 @@ public class TestModeles {
 		chr0.ajout(new Evenement (new Date(13,6,1992), "Inauguration du batiment Leclerc", "Michel Garnier coupe le ruban du bâtiment destiné à la faculté de droit et de science politique à Guyaucourt.", 2, "inauguration.png"));
 		chr0.ajout(new Evenement (new Date(28,9,2016), "Inauguration de la MDE à Guyancourt", "Un evenement très attendu à l'UVSQ.", 2, "MDE.png"));
 		System.out.println(chr0.toString());
+		System.out.println(chr0.nbEvtParAnnee(1992));
+		System.out.println(chr0.nbEvtTotal());		
 	}
 }
