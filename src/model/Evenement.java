@@ -24,14 +24,15 @@ public class Evenement implements Comparable <Evenement> {
 			return -1;
 		if (date.compareTo(parEvt.date) > 0)
 			return 1;
-		if (titre.compareTo(parEvt.titre) < 0)
-			return -1;
-		if (titre.compareTo(parEvt.titre) > 0)
-			return 1;
 		if (poids < parEvt.poids)
 			return -1;
 		if (poids > parEvt.poids)
 			return 1;
+		if (titre.compareTo(parEvt.titre) < 0)
+			return -1;
+		if (titre.compareTo(parEvt.titre) > 0)
+			return 1;
+
 		return 0;
 	}
 	

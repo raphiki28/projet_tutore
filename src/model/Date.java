@@ -12,12 +12,6 @@ public class Date {
 		jour = parJour;
 	}
 	
-	public Date(int parAnnee) {
-		annee = parAnnee;
-		mois = 1;
-		jour = 1;
-	}
-	
 	public String toString () {
 		String [] nomMois = {"janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "novembre", "octobre", "décembre"};
 		return jour + " " + nomMois[mois-1] + " " + annee;
@@ -44,16 +38,6 @@ public class Date {
 	}
 	
 	public static Date lireDate () {
-		System.out.println("Entrer le jour");
-		int parJour = Clavier.lireInt();
-		System.out.println("Entrer le mois");
-		int parMois = Clavier.lireInt();
-		System.out.println("Entrer l'année");
-		int parAnnee = Clavier.lireInt();
-		return new Date(parJour, parMois, parAnnee);
-	}
-	
-	public static Date lireDate2 () {
 		System.out.println("Entrer la date sous la forme 'dd-mm-aaaa'");
 		String chaine = Clavier.lireString();
 		StringTokenizer souschaine = new StringTokenizer(chaine, "-");
@@ -61,6 +45,16 @@ public class Date {
 		for (int i=0 ; souschaine.hasMoreTokens() ; i++)
 			valeurs[i] = Integer.parseInt(souschaine.nextToken());
 		return new Date(valeurs[0], valeurs[1], valeurs[2]);
+	}
+	
+	public static Date lireDate2 () {
+		System.out.println("Entrer le jour");
+		int parJour = Clavier.lireInt();
+		System.out.println("Entrer le mois");
+		int parMois = Clavier.lireInt();
+		System.out.println("Entrer l'année");
+		int parAnnee = Clavier.lireInt();
+		return new Date(parJour, parMois, parAnnee);
 	}
 
 	public static boolean estBissextile (int parAnnee) {

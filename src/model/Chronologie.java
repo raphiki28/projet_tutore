@@ -1,133 +1,96 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.TreeSet;
 
 public class Chronologie {
-	private String nom;
-	private TreeSet <Evenement> chronoEvts;
-	private Date debut;
-	private Date fin;
+	private HashMap <Integer, TreeSet <Evenement>> chronoEvts;
+	private String nomChrono;
+	private int anneeDebut;
+	private int anneeFin;
 	private int periode;
 	private String lienFichier;
 	
-	public Chronologie (String parNom, Date parDebut, Date parFin, int parPeriode, String parFile) {
-		nom = parNom;
-		
-		chronoEvts = new TreeSet <> ();
-		debut = parDebut;
-		fin = parFin;
+	public Chronologie (String parNom, int parDebut, int parFin, int parPeriode, String parFichier) {
+		chronoEvts = new HashMap <> ();
+		nomChrono = parNom;
+		anneeDebut = parDebut;
+		anneeFin = parFin;
 		periode = parPeriode;
-		lienFichier = parFile;
+		lienFichier = parFichier;
 	}
 	
 	public void ajout (Evenement parEvt) {
-		chronoEvts.add(parEvt);
-	}
-	
-	public void suppression (Evenement parEvt) {
-		chronoEvts.remove(parEvt);
-	}
-	public Collection<Evenement> getEvenement() {
-		return chronoEvts;
-	}
-}
-/*	
-	public String toString2 () {
-		String chaine = new String();
-		for (Evenement evt : chronoEvts.get(i))
-			chaine += ">>> " + evt.getDate().toString() + "\n\t" + evt.getTitre() + " à " + evt.getLieu() + "\n";
-
-		for (int i=0 ; i<52 ; i++)
-			if (mapEvts.containsKey(i)) {
-				chaine += "Semaine " + i + " :\n";
-				for (Evenement evt : mapEvts.get(i))
-					chaine += ">>> " + evt.getDate().toString() + "\n\t" + evt.getTitre() + " à " + evt.getLieu() + "\n";
-			}
-		return chaine;
-	}
-	
-	public void ajout(Evenement parEvt) {
-		chronoEvt.add(parEvt);
-		Date date = parEvt.getChDate();
-		calendar = new GregorianCalendar(date.getAnnee(), date.getMois()-1, date.getJour());
-		int numeroDeSemaine = calendar.get(Calendar.WEEK_OF_YEAR);
-		if (Hash_evt.containsKey(numeroDeSemaine)){
-			Hash_evt.get(numeroDeSemaine).add(parEvt);
-		}
-		else{
-			ArrayList <Evenement> liste = new ArrayList();
-			liste.add(parEvt);
-			Hash_evt.put(numeroDeSemaine, liste);
+		int annee = parEvt.getDate().getAnnee();
+		if (chronoEvts.containsKey(annee))
+			chronoEvts.get(annee).add(parEvt);
+		else {
+			TreeSet <Evenement> set = new TreeSet <Evenement> () ;
+			set.add(parEvt);
+			chronoEvts.put(annee, set);
 		}
 	}
 	
-	public String toString (){
-		String chaine = new String();
-		for(int i=0;i<nbEvenements;i++){
-			chaine+=tabEvenement[i]+"\n";
-		}
-		return chaine;
-	}
-
-	public Collection<Evenement> getEvenementSemaine(int numSemaine) {
-		return Hash_evt.get(numSemaine);
-	}
-	public Collection<Evenement> getEvenementSemaine(Date date) {
-		GregorianCalendar calendar = new GregorianCalendar(date.getAnnee(),date.getMois()-1,date.getJour());
-		int numSemaine = calendar.get(Calendar.WEEK_OF_YEAR);
-		return Hash_evt.get(numSemaine);
-	}
-
-}
-*/
-
-/*
-public class Agenda {
-	private ArrayList <Evenement> listEvts;
-	private TreeSet <Evenement> arbreEvts;
-	
-	public Agenda(){
-		listEvts = new ArrayList <Evenement>();
-		arbreEvts = new TreeSet <Evenement>();
+	public int nbEvtTotal () {
+		int nbEvt = 0;
+		for (Integer annee : chronoEvts.keySet())
+			nbEvt += chronoEvts.get(annee).size();
+		return nbEvt;
 	}
 	
-	public void ajout(Evenement parEvt){
-		listEvts.add(parEvt);
-		arbreEvts.add(parEvt);
-	}
-	
-	public int comptNbEvt(String parString){
-		int compteur=0;
-		return compteur;
-	}
-	
-	//ne marche pas car le comareTo n est pas fait
-	/*public int getEvenement(Evenement parEvt){
-		boolean trouve = false;
-		int indice = 0;
-		while(!trouve && indice < nbEvenements){
-			if(tabEvenement[indice].compareTo(parEvt)==0){
-				trouve = true;
-			}
-			else{
-				indice ++;
-			}
-		}
-		if(trouve){
-			return indice;
-		}
-		return -1;
-	}
-	
-	public String toString(){
-		String chaine = new String();
-		for(int i=0;i<nbEvenements;i++){
-			chaine+=tabEvenement[i]+"\n";
-		}
-		return chaine;
+/*	public int nbEvtParAnnee (int parAnnee) {
+		int nbEvts = 0;
+		Iterator <Evenement> iter = chronoEvts.iterator();
+		while (iter.hasNext())
+			if (iter.next().getDate().compareTo(parDate)==0)
+				nbEvts++;
+		return nbEvts;
 	}*/
-//}
+	
+	public String toString() {
+		String chaine = nomChrono + "\n";
+		for (int i=0 ; i<anneeFin-anneeDebut ; i++)
+			if (chronoEvts.containsKey(i)) {
+				chaine += " - " + i + " :\n";
+				for (Evenement evt : chronoEvts.get(i))
+					chaine += "\t>>> " + evt.getDate() + "\n\t [" + evt.getPoids() + "] " + evt.getTitre() + "\n";
+			}
+		return chaine;
+	}
+	
+	public String getNom () {
+		return nomChrono;
+	}
+	
+	public int getAnneeDebut () {
+		return anneeDebut;
+	}
+	
+	public int getAnneeFin () {
+		return anneeFin;
+	}
+	
+	public int getPeriode () {
+		return periode;
+	}
+	
+	public String getLienFichier () {
+		return lienFichier;
+	}
+	
+	public void setAnneeDebut (int parDebut) {
+		anneeDebut = parDebut;
+	}
+	
+	public void setAnneeFin (int parFin) {
+		anneeFin = parFin;
+	}
+	
+	public void setPeriode (int parPeriode) {
+		periode = parPeriode;
+	}
+	
+	public void setLienFichier (String parFichier) {
+		lienFichier = parFichier;
+	}
+}
