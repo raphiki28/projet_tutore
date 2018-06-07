@@ -4,7 +4,7 @@ import java.util.TreeSet;
 import javax.swing.table.DefaultTableModel;
 
 public class Frise extends DefaultTableModel {
-	static final int nbPoids = 4;
+	static final int nbPoids = 5;
 
 	public Frise (Chronologie frise) {
 		int longueurFrise = frise.getAnneeFin() - frise.getAnneeDebut();
@@ -25,13 +25,15 @@ public class Frise extends DefaultTableModel {
 			TreeSet <Evenement> arbreEvts = frise.getEvtParAnnee(annee);
 	        if (arbreEvts != null)
 	            for (Evenement evt : arbreEvts)
-	                placeEvt(evt);
+	                placeEvt(frise, evt);
 		}
 	}
 	
-	public void placeEvt (Evenement parEvt) {
+	public void placeEvt (Chronologie parChrono, Evenement parEvt) {
 		int indiceLigne = parEvt.getPoids();
-		int indiceColonne = parEvt.getDate().getAnnee()-1990;
+		int indiceColonne = parEvt.getDate().getAnnee() - parChrono.getAnneeDebut();
+		System.out.println(indiceLigne);
+		System.out.println(indiceColonne);
 		setValueAt(parEvt, indiceLigne, indiceColonne);
 	}
 	
