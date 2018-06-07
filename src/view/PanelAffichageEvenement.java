@@ -30,8 +30,13 @@ public class PanelAffichageEvenement extends JPanel {
 	public PanelAffichageEvenement(Chronologie frise) {
 		setLayout(gestionnaireDeCarte);
 		
+		for (Integer I :frise.getEvenement().keySet()) {
+			for (int j=0;j<frise.getEvenement().get(I).length; j++) {
+				frise.getEvenement().get(I).toString();
+			}
+		}
 		
-		//setLayout(new GridBagLayout());
+		/*setLayout(new GridBagLayout());
 		GridBagConstraints contrainte = new GridBagConstraints();
 		contrainte.insets = new Insets(6,6,6,6);
 		contrainte.anchor = GridBagConstraints.WEST;
@@ -61,7 +66,7 @@ public class PanelAffichageEvenement extends JPanel {
 		
 		labelTitre.setFont(FONT_14);
 		labelDate.setFont(FONT_12);
-		labelDescription.setFont(FONT_11);
+		labelDescription.setFont(FONT_11);*/
 		
 	}
     public void actionPerformed(ActionEvent parEvt) {
