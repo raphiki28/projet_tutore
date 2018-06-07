@@ -14,7 +14,7 @@ public class Chronologie {
 	private String lienFichier;
 	
 	public Chronologie (String parNom, int parDebut, int parFin, int parPeriode, String parFichier) {
-		chronoEvts = new HashMap <> ();
+		chronoEvts = new HashMap <Integer, TreeSet <Evenement>> ();
 		nomChrono = parNom;
 		anneeDebut = parDebut;
 		anneeFin = parFin;
@@ -81,6 +81,9 @@ public class Chronologie {
 	
 	public String getLienFichier () {
 		return lienFichier;
+	}
+	public HashMap<Integer,TreeSet<Evenement>> getEvenement(){
+		return chronoEvts;
 	}
 	
 	public void setAnneeDebut (int parDebut) {

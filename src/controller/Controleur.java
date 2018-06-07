@@ -28,7 +28,6 @@ public class Controleur implements ActionListener {
 	//panelAffichageFrise.enregisterEcouteur(this);
 	}
 
-	@Override
 	public void actionPerformed(ActionEvent evt) {
 		// TODO Auto-generated method stub
 		if(evt.getActionCommand().equals("Ajouter")){
