@@ -31,21 +31,20 @@ public class Chronologie {
 		}
 	}
 	
+	public TreeSet<Evenement> getEvtParAnnee (int parAnnee) {
+		return chronoEvts.get(parAnnee);
+	}
+	
+	public int nbEvtParAnnee (int parAnnee) {
+		return chronoEvts.get(parAnnee).size();
+	}
+	
 	public int nbEvtTotal () {
 		int nbEvt = 0;
 		for (Integer annee : chronoEvts.keySet())
 			nbEvt += chronoEvts.get(annee).size();
 		return nbEvt;
 	}
-	
-/*	public int nbEvtParAnnee (int parAnnee) {
-		int nbEvts = 0;
-		Iterator <Evenement> iter = chronoEvts.iterator();
-		while (iter.hasNext())
-			if (iter.next().getDate().compareTo(parDate)==0)
-				nbEvts++;
-		return nbEvts;
-	}*/
 	
 	public String toString() {
 		String chaine = nomChrono + "\n";

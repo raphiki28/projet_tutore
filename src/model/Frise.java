@@ -18,5 +18,6 @@ public class Frise extends DefaultTableModel {
 		}
         setColumnCount(longueurFrise);
         setRowCount(nbPoids);
+        setColumnIdentifiers(tabIntitules);
 	}
 }
