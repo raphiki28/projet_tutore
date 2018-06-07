@@ -30,7 +30,7 @@ public class Frise extends DefaultTableModel {
 			return nbEvt;
 		}
 		
-		for (Integer annee : chronoEvts.keySet()) {
+		for (Integer annee : frise.keySet()) {
 			nbEvt += chronoEvts.get(annee).size();
 		}
 		
