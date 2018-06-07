@@ -3,8 +3,6 @@ package model;
 import java.util.HashMap;
 import java.util.TreeSet;
 
-import modele.Evenement;
-
 public class Chronologie {
 	private HashMap <Integer, TreeSet <Evenement>> chronoEvts;
 	private String nomChrono;
@@ -59,9 +57,13 @@ public class Chronologie {
 		return chaine;
 	}
 	
-    public HashMap <Integer, TreeSet<Evenement>> getChronologie() {
+    public HashMap <Integer, TreeSet<Evenement>> getChronologie () {
         return chronoEvts;
     }
+    
+	public HashMap <Integer,TreeSet<Evenement>> getEvenement () {
+		return chronoEvts;
+	}
 	
 	public String getNom () {
 		return nomChrono;
@@ -81,9 +83,6 @@ public class Chronologie {
 	
 	public String getLienFichier () {
 		return lienFichier;
-	}
-	public HashMap<Integer,TreeSet<Evenement>> getEvenement(){
-		return chronoEvts;
 	}
 	
 	public void setAnneeDebut (int parDebut) {

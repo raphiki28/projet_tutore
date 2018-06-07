@@ -3,12 +3,10 @@ package model;
 import java.util.TreeSet;
 import javax.swing.table.DefaultTableModel;
 
-import modele.Evenement;
-
 public class Frise extends DefaultTableModel {
 	static final int nbPoids = 4;
 
-	public Frise (Chronologie frise, int parAnnee) {
+	public Frise (Chronologie frise) {
 		int longueurFrise = frise.getAnneeFin() - frise.getAnneeDebut();
 		
 		String [] tabIntitules = new String [longueurFrise];
@@ -23,27 +21,17 @@ public class Frise extends DefaultTableModel {
         setRowCount(nbPoids);
         setColumnIdentifiers(tabIntitules);
         
-		public int nbEvtTotal () {
-			int nbEvt = 0;
-
-				
-			return nbEvt;
+		for (Integer annee : frise.getChronologie().keySet()) {
+			TreeSet <Evenement> arbreEvts = frise.getEvtParAnnee(annee);
+	        if (arbreEvts != null)
+	            for (Evenement evt : arbreEvts)
+	                placeEvt(evt);
 		}
-		
-		for (Integer annee : frise.keySet()) {
-			nbEvt += chronoEvts.get(annee).size();
-		}
-		
-        TreeSet <Evenement> arbreEvts = frise.getEvtParAnnee(parAnnee);
-        if (arbreEvts != null)
-            for (Evenement evt : arbreEvts)
-                placeEvt(evt);
 	}
 	
 	public void placeEvt (Evenement parEvt) {
-		int indiceLigne = 0;
-		int indiceColonne = 0;
-		parEvt.
+		int indiceLigne = parEvt.getPoids();
+		int indiceColonne = parEvt.getDate().getAnnee()-1990;
 		setValueAt(parEvt, indiceLigne, indiceColonne);
 	}
 	
