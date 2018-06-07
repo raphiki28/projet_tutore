@@ -143,7 +143,7 @@ public class PanelFormulaireFrise extends JPanel {
 		champTitre.requestFocus();
 	}
 	public Chronologie getFrise() {
-		return new Chronologie(champTitre.getText(),new Date(Integer.parseInt(champDebut.getText())),new Date (Integer.parseInt(champFin.getText())),Integer.parseInt(champPeriode.getText()),champFichier.getText());
+		return new Chronologie(champTitre.getText(),Integer.parseInt(champDebut.getText()),Integer.parseInt(champFin.getText()),Integer.parseInt(champPeriode.getText()),champFichier.getText());
 	}
 	
 

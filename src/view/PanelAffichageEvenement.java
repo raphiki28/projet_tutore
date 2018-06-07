@@ -31,7 +31,7 @@ public class PanelAffichageEvenement extends JPanel {
 		setLayout(gestionnaireDeCarte);
 		
 		for (Integer I :frise.getEvenement().keySet()) {
-			for (int j=0;j<frise.getEvenement().get(I).length; j++) {
+			for (int j=0;j<frise.getEvenement().get(I).size(); j++) {
 				frise.getEvenement().get(I).toString();
 			}
 		}
@@ -66,7 +66,7 @@ public class PanelAffichageEvenement extends JPanel {
 		
 		labelTitre.setFont(FONT_14);
 		labelDate.setFont(FONT_12);
-		labelDescription.setFont(FONT_11);*/
+		labelDescription.setFont(FONT_11);
 		
 	}
     public void actionPerformed(ActionEvent parEvt) {
@@ -74,6 +74,7 @@ public class PanelAffichageEvenement extends JPanel {
         if(parEvt.getSource()==boutonSuivant)
             gestionnaireDeCartes.previous(panelCentre);//precedent
         else
-            gestionnaireDeCartes.next(panelCentre);//suivant
+            gestionnaireDeCartes.next(panelCentre);//suivant*/
     }
 }
+
