@@ -4,7 +4,7 @@ import java.util.TreeSet;
 import javax.swing.table.DefaultTableModel;
 
 public class Frise extends DefaultTableModel {
-	static final int nbPoids = 5;
+	static final int nbPoids = 4;
 
 	public Frise (Chronologie frise) {
 		int longueurFrise = frise.getAnneeFin() - frise.getAnneeDebut();
@@ -12,7 +12,7 @@ public class Frise extends DefaultTableModel {
 		String [] tabIntitules = new String [longueurFrise];
 		for (int i=0 ; i<longueurFrise ; i++) {
 			int intitule = frise.getAnneeDebut()+i;
-			if (intitule%frise.getPeriode()==0)
+			if (intitule%frise.getPeriode()==0 || i==0 || i==longueurFrise)
 				tabIntitules[i] = String.valueOf(intitule);
 			else
 				tabIntitules[i] = "";
@@ -30,7 +30,7 @@ public class Frise extends DefaultTableModel {
 	}
 	
 	public void placeEvt (Chronologie parChrono, Evenement parEvt) {
-		int indiceLigne = parEvt.getPoids();
+		int indiceLigne = parEvt.getPoids()-1;
 		int indiceColonne = parEvt.getDate().getAnnee() - parChrono.getAnneeDebut();
 		System.out.println(indiceLigne);
 		System.out.println(indiceColonne);

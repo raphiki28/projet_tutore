@@ -33,7 +33,7 @@ public class PanelAffichageFrise extends JPanel {
 		tableFrise.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		
 		JScrollPane scrollBar = new JScrollPane(tableFrise, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-		scrollBar.setPreferredSize(new Dimension(850,500));
+		scrollBar.setPreferredSize(new Dimension(800,300));
 		
 		tableFrise.addMouseListener(new MouseAdapter() {
 			public void mouseClicked (MouseEvent evt) {
@@ -47,5 +47,10 @@ public class PanelAffichageFrise extends JPanel {
 				}
 			}
 		});
+		
+		//tableFrise.setDefaultRenderer(Integer.class, new CelluleRenderer());
+		//tableFrise.setDefaultRenderer(String.class, new CelluleRenderer());
+		this.add(scrollBar);
+		
 	}
 }

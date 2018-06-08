@@ -27,9 +27,9 @@ public class FenetreFrise extends JFrame {
 		}
 		
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setSize(600,650);
+		setSize(1000,650);
 		setVisible(true);
-		setLocation(100,100);
+		setLocation(100,50);
 	}
 	
 	public static void main (String [] args) {

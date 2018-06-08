@@ -29,14 +29,14 @@ public class PanelAffichageEvenement extends JPanel {
 	
 	public PanelAffichageEvenement(Chronologie frise) {
 		setLayout(gestionnaireDeCarte);
-		
-		for (Integer I :frise.getEvenement().keySet()) {
+		Evenement evt = new Evenement(new Date(01,9,1985), "Implantation d'une antenne à St-Quentin", "Tout commence lorsqu'antenne délocalisée de Nanterre Paris-X s’installe à Guyancourt dans un groupe scolaire désaffecté", 2, "truc");
+
+/*		for (Integer I :frise.getEvenement().keySet()) {
 			for (int j=0;j<frise.getEvenement().get(I).size(); j++) {
 				frise.getEvenement().get(I).toString();
 			}
-		}
-		
-		/*setLayout(new GridBagLayout());
+		}*/
+		setLayout(new GridBagLayout());
 		GridBagConstraints contrainte = new GridBagConstraints();
 		contrainte.insets = new Insets(6,6,6,6);
 		contrainte.anchor = GridBagConstraints.WEST;
@@ -48,7 +48,7 @@ public class PanelAffichageEvenement extends JPanel {
 		JLabel labelTitre = new JLabel(evt.getTitre(),JLabel.LEFT);
 		JLabel labelDescription =new JLabel (evt.getDescription(),JLabel.LEFT);
 
-		
+		add(boutonPrecedant);
 		//labelTitre
 		add(labelTitre, contrainte);
 		
@@ -67,14 +67,17 @@ public class PanelAffichageEvenement extends JPanel {
 		labelTitre.setFont(FONT_14);
 		labelDate.setFont(FONT_12);
 		labelDescription.setFont(FONT_11);
+		add(boutonPrecedant);
+		add(boutonSuivant);
+		
 		
 	}
     public void actionPerformed(ActionEvent parEvt) {
         
         if(parEvt.getSource()==boutonSuivant)
-            gestionnaireDeCartes.previous(panelCentre);//precedent
+        	gestionnaireDeCarte.previous(this);
         else
-            gestionnaireDeCartes.next(panelCentre);//suivant*/
+        	gestionnaireDeCarte.next(this);
     }
 }
 
